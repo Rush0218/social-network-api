@@ -1,4 +1,4 @@
-const { Schema, Types, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     username: {
@@ -10,7 +10,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/^[a-z\d_.-]+@[\da-z.-]+\.[a-zA-Z]{2,4}$/]
+        //match: [/^[a-z\d_.-]+@[\da-z.-]+\.[a-zA-Z]{2,4}$/]
+        match: [/.+@.+\..+/]
     },
     thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
     friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
